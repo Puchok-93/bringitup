@@ -1,6 +1,7 @@
 import MainSlider from "./modules/slider/slider-main.js";
 import MiniSlider from "./modules/slider/slider-mini.js";
 import VideoPlayer from './modules/videoPlayer.js';
+import Difference from './modules/difference.js';
 
 window.addEventListener('DOMContentLoaded', () => {
     const slider = new MainSlider({container:'.page', btns: '.next'});
@@ -31,6 +32,8 @@ window.addEventListener('DOMContentLoaded', () => {
         next: '.feed__slider .slick-next',
         activeClass: 'feed__item-active',
     });
+
+    new Difference('.officerold', '.officernew', '.officer__card-item').init();
 
     slider.render();
     player.init();
