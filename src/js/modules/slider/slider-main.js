@@ -2,9 +2,9 @@ import Slider from './slider.js';
 
 // MainSlider наследуется от Slider
 export default class MainSlider extends Slider {
-    constructor(page, btns) {
-        // Появятся два свойства this.page и this.btns
-        super(page, btns);
+    constructor(btns) {
+        // Появятся свойство this.btns
+        super(btns);
     }
 
     showSlides(n) {
