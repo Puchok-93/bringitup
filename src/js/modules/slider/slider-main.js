@@ -2,9 +2,9 @@ import Slider from './slider.js';
 
 // MainSlider наследуется от Slider
 export default class MainSlider extends Slider {
-    constructor(btns) {
+    constructor(btns, prevModule, nextModule) {
         // Появятся свойство this.btns
-        super(btns);
+        super(btns, prevModule, nextModule);
     }
 
     showSlides(n) {
@@ -43,26 +43,39 @@ export default class MainSlider extends Slider {
         this.showSlides(this.slideIndex += n);
     }
 
+    bindTriggers() {
+        this.btns.forEach(item => {
+            item.addEventListener('click', () => {
+                this.plusSlides(1);
+            });
+
+            item.parentNode.previousElementSibling.addEventListener('click', (e) => {
+                e.preventDefault();
+                this.slideIndex = 1;
+                this.showSlides(this.slideIndex);
+            })
+        });
+    }
+
+    bindModuleTriggers(selector, index) {
+        selector.forEach(item => {
+            item.addEventListener('click', (e) => {
+                e.stopPropagation();
+                e.preventDefault();
+                this.plusSlides(index);
+            });
+        });
+    }
+
     render() {
-        try {
+        if(this.container) {
             try {
                 this.hanson = document.querySelector('.hanson');
             } catch (error) {};
-    
-    
-            this.btns.forEach(item => {
-                item.addEventListener('click', () => {
-                    this.plusSlides(1);
-                });
-    
-                item.parentNode.previousElementSibling.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    this.slideIndex = 1;
-                    this.showSlides(this.slideIndex);
-                })
-            });
-    
+            this.bindTriggers();
             this.showSlides(this.slideIndex);
-        } catch(e){}
+            this.bindModuleTriggers(this.prevModule, -1);
+            this.bindModuleTriggers(this.nextModule, 1);
+        } 
     }
 }
