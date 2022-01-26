@@ -2,9 +2,9 @@ import Slider from './slider.js';
 
 // MainSlider наследуется от Slider
 export default class MainSlider extends Slider {
-    constructor(btns) {
+    constructor(btns, prevModule, nextModule) {
         // Появятся свойство this.btns
-        super(btns);
+        super(btns, prevModule, nextModule);
     }
 
     showSlides(n) {
@@ -58,7 +58,7 @@ export default class MainSlider extends Slider {
     }
 
     bindModuleTriggers(selector, index) {
-        document.querySelectorAll(selector).forEach(item => {
+        selector.forEach(item => {
             item.addEventListener('click', (e) => {
                 e.stopPropagation();
                 e.preventDefault();
@@ -72,27 +72,10 @@ export default class MainSlider extends Slider {
             try {
                 this.hanson = document.querySelector('.hanson');
             } catch (error) {};
-
             this.bindTriggers();
-    
             this.showSlides(this.slideIndex);
-            this.bindModuleTriggers('.prevmodule', -1);
-            this.bindModuleTriggers('.nextmodule', 1);
-
-            // document.querySelectorAll('.prevmodule').forEach(item => {
-            //     item.addEventListener('click', (e) => {
-            //         e.preventDefault();
-            //         this.plusSlides(-1);
-            //     });
-            // });
-
-            // document.querySelectorAll('.nextmodule').forEach(item => {
-            //     item.addEventListener('click', (e) => {
-            //         e.stopPropagation();
-            //         e.preventDefault();
-            //         this.plusSlides(1);
-            //     });
-            // });
+            this.bindModuleTriggers(this.prevModule, -1);
+            this.bindModuleTriggers(this.nextModule, 1);
         } 
     }
 }
