@@ -6,7 +6,9 @@ import Form from './modules/form.js';
 
 window.addEventListener('DOMContentLoaded', () => {
     const slider = new MainSlider({container:'.page', btns: '.next'});
-    const player = new VideoPlayer('.play', '.overlay');
+    new VideoPlayer('.play', '.overlay').init();
+    new VideoPlayer('.module__video-item .play', '.overlay').init();
+
 
     const modulePageSlider = new MainSlider({
         container: '.moduleapp',
@@ -45,7 +47,6 @@ window.addEventListener('DOMContentLoaded', () => {
     new Form('.form').init();
     slider.render();
     modulePageSlider.render();
-    player.init();
     showUpSlider.init();
     modulesSlider.init();
     feedSlider.init();
