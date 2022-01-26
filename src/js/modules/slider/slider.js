@@ -20,5 +20,8 @@ export default class Slider {
         this.activeClass = activeClass;
         this.animate = animate;
         this.autoplay = autoplay;
+
+        // this.prevModule = this.btns = document.querySelectorAll(this.prevModule);
+        // this.nextModule = this.btns = document.querySelectorAll(this.nextModule);
     }
 }

@@ -8,6 +8,11 @@ window.addEventListener('DOMContentLoaded', () => {
     const slider = new MainSlider({container:'.page', btns: '.next'});
     const player = new VideoPlayer('.play', '.overlay');
 
+    const modulePageSlider = new MainSlider({
+        container: '.moduleapp',
+        btns: '.next'
+    });
+
     const showUpSlider = new MiniSlider({
         container: '.showup__content-slider',
         prev: '.showup__prev',
@@ -37,6 +42,7 @@ window.addEventListener('DOMContentLoaded', () => {
     new Difference('.officerold', '.officernew', '.officer__card-item').init();
     new Form('.form').init();
     slider.render();
+    modulePageSlider.render();
     player.init();
     showUpSlider.init();
     modulesSlider.init();
