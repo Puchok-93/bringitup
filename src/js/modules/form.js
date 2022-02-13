@@ -5,7 +5,7 @@ export default class Form {
         this.message = {
             loading: 'Загрузка...',
             success: 'Отправлено',
-            error: 'Пошел нах'
+            error: 'Ошибка'
         };
         this.path = 'assets/question.php';
     }
